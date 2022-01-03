@@ -9,9 +9,6 @@
 
 namespace ft {
 
-# define _HEADER_HELP \
-	template <typename Key, typename Val, typename KeyOfValue, typename Compare, typename Alloc>
-
 	template <typename Key, typename Val, typename KeyOfValue, typename Compare, typename Alloc = std::allocator<Val> >
 	class	Rb_tree {
 
@@ -37,7 +34,7 @@ namespace ft {
 
 			allocator_type	get_allocator() const { return this->_alloc; }
 
-			Rb_tree(const Compare& comp, const Node_allocator& a) : _alloc(a), _node_count(0), _key_compare(comp) {
+			Rb_tree(const Compare& comp, const allocator_type& a) : _alloc(a), _node_count(0), _key_compare(comp) {
 				_root.color = _red;
 				_root.parent = 0;
 				_root.left = &this->_root;
@@ -385,17 +382,22 @@ namespace ft {
 
 	};
 
-	_HEADER_HELP
+	template <typename Key, typename Val, typename KeyOfValue, typename Compare, typename Alloc>
 	inline bool	operator==(const Rb_tree<Key, Val, KeyOfValue, Compare, Alloc>& x, const Rb_tree<Key, Val, KeyOfValue, Compare, Alloc>& y) { return x.size() == y.size() && ft::equal(x.begin(), x.end(), y.begin()); }
-	_HEADER_HELP
+
+	template <typename Key, typename Val, typename KeyOfValue, typename Compare, typename Alloc>
 	inline bool	operator<(const Rb_tree<Key, Val, KeyOfValue, Compare, Alloc>& x, const Rb_tree<Key, Val, KeyOfValue, Compare, Alloc>& y) { return ft::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end()); }
-	_HEADER_HELP
+
+	template <typename Key, typename Val, typename KeyOfValue, typename Compare, typename Alloc>
 	inline bool	operator!=(const Rb_tree<Key, Val, KeyOfValue, Compare, Alloc>& x, const Rb_tree<Key, Val, KeyOfValue, Compare, Alloc>& y) { return !(x == y); }
-	_HEADER_HELP
+
+	template <typename Key, typename Val, typename KeyOfValue, typename Compare, typename Alloc>
 	inline bool	operator>(const Rb_tree<Key, Val, KeyOfValue, Compare, Alloc>& x, const Rb_tree<Key, Val, KeyOfValue, Compare, Alloc>& y) { return y < x; }
-	_HEADER_HELP
+
+	template <typename Key, typename Val, typename KeyOfValue, typename Compare, typename Alloc>
 	inline bool	operator<=(const Rb_tree<Key, Val, KeyOfValue, Compare, Alloc>& x, const Rb_tree<Key, Val, KeyOfValue, Compare, Alloc>& y) { return !(y < x); }
-	_HEADER_HELP
+
+	template <typename Key, typename Val, typename KeyOfValue, typename Compare, typename Alloc>
 	inline bool	operator>=(const Rb_tree<Key, Val, KeyOfValue, Compare, Alloc>& x, const Rb_tree<Key, Val, KeyOfValue, Compare, Alloc>& y) { return !(x < y); }
 
 }//namespace
