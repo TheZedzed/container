@@ -55,8 +55,7 @@ namespace ft {
 	};
 
 	template <typename InputIterator>
-	inline typename iterator_traits<InputIterator>::difference_type
-	distance(InputIterator first, InputIterator last) {
+	inline typename iterator_traits<InputIterator>::difference_type	distance(InputIterator first, InputIterator last) {
 		typename iterator_traits<InputIterator>::difference_type 	n = 0;
 
 		while (first != last) {
@@ -67,8 +66,7 @@ namespace ft {
 	}
 
 	template <typename InputIterator, typename Distance>
-	inline void
-	advance(InputIterator& i, Distance n) {
+	inline void	advance(InputIterator& i, Distance n) {
 		while (n--)
 			++i;
 	}
